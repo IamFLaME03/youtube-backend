@@ -17,7 +17,7 @@ const videoSchema = new Schema(
       },
       description: {
          type: String,
-         required: true
+         required: true,
       },
       duration: {
          type: Number,
@@ -38,6 +38,11 @@ const videoSchema = new Schema(
       },
    }
 , {timestamps: true})
+
+videoSchema.index({
+   title: "text",
+   description: "text"
+})
 
 videoSchema.plugin(mongooseAggregatePaginate)
 
